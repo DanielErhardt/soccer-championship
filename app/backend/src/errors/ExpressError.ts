@@ -1,4 +1,4 @@
-abstract class HttpError extends Error {
+class ExpressError extends Error {
   protected _statusCode: number;
 
   constructor(statusCode: number, message: string) {
@@ -9,4 +9,4 @@ abstract class HttpError extends Error {
   public get statusCode() { return this._statusCode; }
 }
 
-export default HttpError;
+export default ExpressError;
