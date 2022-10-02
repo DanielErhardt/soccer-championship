@@ -2,11 +2,11 @@ import { STRING, Model, INTEGER } from 'sequelize';
 import db from '.';
 
 class User extends Model {
-  private _id: number;
-  private _username: string;
-  private _email: string;
-  private _role: string;
-  private _password: string;
+  id: number;
+  username: string;
+  email: string;
+  role: string;
+  password: string;
 }
 
 User.init({
