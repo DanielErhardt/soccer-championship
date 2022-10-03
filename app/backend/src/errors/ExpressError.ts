@@ -3,9 +3,10 @@ import { ValidationError } from 'joi';
 class ExpressError extends Error {
   protected _statusCode: number;
 
-  constructor(statusCode: number, message: string) {
+  constructor(statusCode: number, message: string, name?: string) {
     super(message);
     this._statusCode = statusCode;
+    this.name = name || 'Express Error';
   }
 
   public get statusCode() { return this._statusCode; }
