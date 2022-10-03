@@ -23,3 +23,7 @@ export type MatchAttributes = ModelAttributes & {
   awayTeamGoals: number;
   inProgress: number;
 };
+
+export type JwtPayload = {
+  id: string;
+};
