@@ -16,7 +16,7 @@ class UserController {
 
   public validate: RequestHandler = async (req, res) => {
     const { headers: { userId } } = req;
-    const role = await this._service.getById(Number(userId));
+    const { role } = await this._service.getById(Number(userId));
     res.status(200).json({ role });
   };
 }

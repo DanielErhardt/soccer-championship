@@ -17,10 +17,10 @@ class UserService {
     return user;
   };
 
-  public getById = async (userId: number): Promise<string> => {
+  public getById = async (userId: number): Promise<User> => {
     const user = await this._model.findByPk(userId);
     if (!user) throw ServiceError.userNotFound;
-    return user.role;
+    return user;
   };
 }
 
