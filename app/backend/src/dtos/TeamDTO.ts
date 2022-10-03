@@ -1,6 +1,6 @@
 import { TeamAttributes } from '../@types';
 import DTO from './DTO';
-import { teamSchema } from './Validations';
+import { teamSchema } from './JoiSchemes';
 
 class TeamDTO extends DTO<TeamAttributes> {
   constructor(attributes: TeamAttributes) {

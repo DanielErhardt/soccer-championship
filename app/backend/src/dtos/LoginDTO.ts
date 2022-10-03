@@ -1,6 +1,6 @@
 import { LoginAttributes } from '../@types';
 import DTO from './DTO';
-import { loginSchema } from './Validations';
+import { loginSchema } from './JoiSchemes';
 
 class LoginDTO extends DTO<LoginAttributes> {
   constructor(attributes: LoginAttributes) {
