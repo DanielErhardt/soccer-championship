@@ -1,4 +1,5 @@
 import { RequestHandler } from 'express';
+import Token from '../utilities/Token';
 import { LoginAttributes } from '../@types';
 import LoginDTO from '../dtos/LoginDTO';
 import UserService from '../services/UserService';
@@ -8,7 +9,8 @@ class UserController {
 
   public login: RequestHandler = async (req, res) => {
     const loginDTO = new LoginDTO(req.body as LoginAttributes);
-    const token = await this._service.login(loginDTO);
+    const user = await this._service.getByCredentials(loginDTO);
+    const token = Token.create(user.id);
     return res.status(200).json({ token });
   };
 
