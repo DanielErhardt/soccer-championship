@@ -1,6 +1,6 @@
 import { sign, verify, SignOptions } from 'jsonwebtoken';
 
-class TokenService {
+class Token {
   private static secret = process.env.JWT_SECRET as string;
 
   private static options: SignOptions = {
@@ -17,4 +17,4 @@ class TokenService {
   }
 }
 
-export default TokenService;
+export default Token;
