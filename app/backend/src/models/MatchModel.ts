@@ -8,6 +8,10 @@ class MatchModel {
 
   public findByPk = async (matchId: number): Promise<Match | null> =>
     this._sequelizeModel.findByPk(matchId);
+
+  public create = async (match: MatchAttributes): Promise<Match> =>
+    this._sequelizeModel.create(match);
+
 }
 
 export default MatchModel;
