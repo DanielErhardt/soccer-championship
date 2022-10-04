@@ -1,3 +1,4 @@
+import { MatchGoalsAttributes } from '../@types';
 import ServiceError from '../errors/ServiceError';
 import MatchDTO from '../dtos/MatchDTO';
 import Match from '../database/models/Match';
@@ -28,6 +29,12 @@ class MatchService {
     const match = await this._matchModel.findByPk(matchId);
     if (!match) throw ServiceError.matchNotFound;
     await this._matchModel.setFinished(matchId);
+  };
+
+  public updateGoals = async (matchId: number, goals: MatchGoalsAttributes) => {
+    const match = await this._matchModel.findByPk(matchId);
+    if (!match) throw ServiceError.matchNotFound;
+    await this._matchModel.updateGoals(matchId, goals);
   };
 }
 

@@ -25,6 +25,12 @@ class MatchController {
     await this._service.setFinished(+id);
     res.status(200).json({ message: 'Finished' });
   };
+
+  public updateGoals: RequestHandler = async (req, res) => {
+    const { params: { id }, body: goals } = req;
+    await this._service.updateGoals(+id, goals);
+    res.status(200).json({ message: 'Updated' });
+  };
 }
 
 export default MatchController;

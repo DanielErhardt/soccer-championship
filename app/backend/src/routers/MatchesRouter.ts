@@ -12,4 +12,6 @@ MatchesRouter.post('/', authenticate, matchController.create);
 
 MatchesRouter.patch('/:id/finish', matchController.setFinished);
 
+MatchesRouter.patch('/:id', matchController.updateGoals);
+
 export default MatchesRouter;

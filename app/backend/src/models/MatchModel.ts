@@ -1,4 +1,4 @@
-import { MatchAttributes } from '../@types';
+import { MatchAttributes, MatchGoalsAttributes } from '../@types';
 import Match from '../database/models/Match';
 import { matchIncludeTeams } from './FindOptions';
 
@@ -21,6 +21,14 @@ class MatchModel {
       },
     },
   );
+
+  public updateGoals = async (matchId: number, goals: MatchGoalsAttributes) =>
+    this._sequelizeModel.update(
+      { ...goals },
+      { where: {
+        id: matchId,
+      } },
+    );
 }
 
 export default MatchModel;
