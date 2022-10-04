@@ -5,6 +5,12 @@ class TeamModel {
 
   public findAll = async (): Promise<Team[]> => this._sequelizeModel.findAll();
 
+  public findAllWithIds = async (ids: number[]) => this._sequelizeModel.findAll({
+    where: {
+      id: ids,
+    },
+  });
+
   public findByPk = async (teamId: number): Promise<Team | null> =>
     this._sequelizeModel.findByPk(teamId);
 }
