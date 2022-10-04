@@ -1,0 +1,19 @@
+import TeamStatus from '../dtos/TeamStatus';
+import MatchModel from '../models/MatchModel';
+import TeamModel from '../models/TeamModel';
+
+class LeaderboardService {
+  private _teamModel = new TeamModel();
+  private _matchModel = new MatchModel();
+
+  public getResults = async (): Promise<TeamStatus[]> => {
+    const teams = await this._teamModel.findAll();
+    const matches = await this._matchModel.findAll();
+
+    return teams.map((team) =>
+      new TeamStatus(team, matches.filter((match) => !match.inProgress)));
+  };
+
+}
+
+export default LeaderboardService;
