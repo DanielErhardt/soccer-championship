@@ -5,8 +5,8 @@ const TeamsRouter = Router();
 
 const teamController = new TeamController();
 
-TeamsRouter.get('/', teamController.getAll);
+TeamsRouter.get('/', teamController.findAll);
 
-TeamsRouter.get('/:id', teamController.getById);
+TeamsRouter.get('/:id', teamController.findByPk);
 
 export default TeamsRouter;
