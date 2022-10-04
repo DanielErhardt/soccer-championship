@@ -14,6 +14,18 @@ class LeaderboardService {
       new TeamStatus(team, matches.filter((match) => !match.inProgress)));
   };
 
+  public getHomeResults = async (): Promise<TeamStatus[]> => {
+    const teams = await this._teamModel.findAll();
+    const matches = await this._matchModel.findAll();
+
+    return teams
+      .map((team) => new TeamStatus(
+        team,
+        matches
+          .filter((match) => !match.inProgress)
+          .filter((match) => match.homeTeam === team.id),
+      ));
+  };
 }
 
 export default LeaderboardService;
