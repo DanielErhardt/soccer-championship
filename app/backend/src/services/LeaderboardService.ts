@@ -26,6 +26,19 @@ class LeaderboardService {
           .filter((match) => match.homeTeam === team.id),
       ));
   };
+
+  public getAwayResults = async (): Promise<TeamStatus[]> => {
+    const teams = await this._teamModel.findAll();
+    const matches = await this._matchModel.findAll();
+
+    return teams
+      .map((team) => new TeamStatus(
+        team,
+        matches
+          .filter((match) => !match.inProgress)
+          .filter((match) => match.awayTeam === team.id),
+      ));
+  };
 }
 
 export default LeaderboardService;
