@@ -9,14 +9,14 @@ class UserController {
 
   public login: RequestHandler = async (req, res) => {
     const loginDTO = new LoginDTO(req.body as LoginAttributes);
-    const user = await this._service.getByCredentials(loginDTO);
+    const user = await this._service.findByCredentials(loginDTO);
     const token = Token.create(user.id);
     return res.status(200).json({ token });
   };
 
   public validate: RequestHandler = async (req, res) => {
     const { headers: { userId } } = req;
-    const { role } = await this._service.getById(Number(userId));
+    const { role } = await this._service.findByPk(Number(userId));
     res.status(200).json({ role });
   };
 }
