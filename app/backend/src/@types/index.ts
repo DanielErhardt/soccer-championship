@@ -16,11 +16,14 @@ export type TeamAttributes = ModelAttributes & {
   teamName: string;
 };
 
-export type MatchAttributes = ModelAttributes & {
-  homeTeam: number;
+export type MatchGoalsAttributes = {
   homeTeamGoals: number;
-  awayTeam: number;
   awayTeamGoals: number;
+};
+
+export type MatchAttributes = ModelAttributes & MatchGoalsAttributes & {
+  homeTeam: number;
+  awayTeam: number;
   inProgress: number;
 };
 
