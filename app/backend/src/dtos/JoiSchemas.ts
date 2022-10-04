@@ -17,4 +17,12 @@ export const userSchema = Joi.object({});
 
 export const teamSchema = Joi.object({});
 
-export const matchSchema = Joi.object({});
+export const matchSchema = Joi.object({
+  homeTeam: Joi.number().required(),
+  awayTeam: Joi.number().required(),
+  homeTeamGoals: Joi.number().required(),
+  awayTeamGoals: Joi.number().required(),
+  inProgress: Joi.boolean(),
+}).messages({
+  'any.required': MISSING_FIELD,
+});
