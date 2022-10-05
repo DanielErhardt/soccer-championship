@@ -15,6 +15,14 @@ class Token {
   public static validate(token: string) {
     return verify(token, this.secret);
   }
+
+  public static createMock(id: number) {
+    return sign({ id }, 'super_secret', { algorithm: 'HS256', expiresIn: '10s' });
+  }
+
+  public static validateMock(token: string) {
+    return verify(token, 'super_secret');
+  }
 }
 
 export default Token;
